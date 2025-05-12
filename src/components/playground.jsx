@@ -51,6 +51,12 @@ export default function Playground() {
     inputRef.current.value = "";
     setFormattedJson("");
   };
+
+  const handleLogout = () => {
+    window.catalyst.auth.signOut('/').then(() => {
+      window.location.href = '/__catalyst/auth/login'
+    });
+  };
   return (
     <>
       <div className="flex flex-col justify-between lg:flex-row">
@@ -73,6 +79,9 @@ export default function Playground() {
           <button onClick={handleReset} className={styles.button}>
             Reset
           </button>
+          <button onClick={handleLogout} className={styles.button}>
+            Logout
+            </button>
         </div>
         {/* Output */}
         <Editor
